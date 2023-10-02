@@ -1,13 +1,13 @@
 ﻿using Api.Database;
 using Api.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api;
+namespace Api.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class UsersController : ControllerBase
+[Authorize]
+public class UsersController : CustomControllerBase
 {
   public readonly MatchngDbContext _db;
 
@@ -16,6 +16,7 @@ public class UsersController : ControllerBase
     _db = db;
   }
 
+  [AllowAnonymous]
   [HttpGet]
   public async Task<ActionResult<List<User>>> GetUsers()
   {

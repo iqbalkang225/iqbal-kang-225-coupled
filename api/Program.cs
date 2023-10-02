@@ -1,25 +1,27 @@
-using Api.Database;
-using Microsoft.EntityFrameworkCore;
+using Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddCors();
 
-builder.Services.AddDbContext<MatchngDbContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
+// adding services through extension methods
+builder.Services.AddApplicationSevice(builder.Configuration);
+builder.Services.AddIdentityService(builder.Configuration);
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+// adding the cors middleware
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+// adding authentication middlewares
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+// adding the controllers
 app.MapControllers();
 
+// starting the app
 app.Run();
