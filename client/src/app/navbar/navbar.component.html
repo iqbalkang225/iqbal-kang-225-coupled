@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Matchng</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarSupportedContent"
+    >
+      <app-navbar-links *ngIf="authService.user$ | async"></app-navbar-links>
+
+      <div class="ms-auto">
+        <app-navbar-form *ngIf="!(authService.user$ | async)"></app-navbar-form>
+        <app-navbar-dropdown
+          *ngIf="authService.user$ | async"
+        ></app-navbar-dropdown>
+      </div>
+    </div>
+  </div>
+</nav>
