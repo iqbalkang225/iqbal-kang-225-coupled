@@ -3,6 +3,7 @@ using System;
 using Api.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Database.Migrations
 {
     [DbContext(typeof(MatchngDbContext))]
-    partial class MatchngDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231005011840_ExtendedUser")]
+    partial class ExtendedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -37,7 +40,7 @@ namespace Api.Database.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("photos", (string)null);
+                    b.ToTable("photos");
                 });
 
             modelBuilder.Entity("Api.Entities.User", b =>
@@ -97,7 +100,7 @@ namespace Api.Database.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Api.Entities.Photo", b =>

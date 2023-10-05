@@ -1,0 +1,21 @@
+$primary: #861657;
+$secondary: #fffded;
+// $success: $green;
+// $info: $cyan;
+// $warning: $yellow;
+$danger: #f4acb7;
+// $light: $gray-100;
+$dark: #5c5d67;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  // "success": $success,
+  // "info": $info,
+  // "warning": $warning,
+  "danger": $danger,
+  // "light": $light,
+  "dark": $dark,
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";

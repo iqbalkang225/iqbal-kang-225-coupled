@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,9 +8,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar-dropdown.component.css'],
 })
 export class NavbarDropdownComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogout() {
     this.authService.removeUserFromLocalStorage();
+    this.router.navigateByUrl('/');
   }
 }

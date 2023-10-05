@@ -7,13 +7,20 @@ import { BehaviorSubject, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  baseUrl = 'https://localhost:5001/api/auth/';
   user$ = new BehaviorSubject<UserResponse | null>(null);
 
-  constructor(private httpService: HttpClient) {}
+  constructor(private http: HttpClient) {}
+
+  register(data: LoginUser) {
+    return this.http
+      .post<UserResponse>(this.baseUrl + 'register', data)
+      .pipe(tap(this.saveUserToLocalStorage.bind(this)));
+  }
 
   login(data: LoginUser) {
-    return this.httpService
-      .post<UserResponse>('https://localhost:5001/api/auth/login', data)
+    return this.http
+      .post<UserResponse>(this.baseUrl + 'login', data)
       .pipe(tap(this.saveUserToLocalStorage.bind(this)));
   }
 
