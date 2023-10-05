@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k+sdX0UVocS4MoJDN91KwcLA8gTOSq9Ab5caOjXElQfAaNIQYvgpqOmD0CD+9p1Kn2L16iNbg2hvsjS2VZCBgg==",
+  "dgSpecHash": "Yj1KWIvZxFT5lrlpPnaj//m4m5DbZPMt0EKeFZ3gmRkF4V8JbirsS6QkcH5gTnFJTddvpXFZTBDBu0bdqFBKJw==",
   "success": true,
-  "projectFilePath": "/Users/iqbal-kang/Desktop/full-stack/matchng/api/Api.csproj",
+  "projectFilePath": "/Users/iqbal-kang/Desktop/full-stack/coupled/api/Api.csproj",
   "expectedPackageFiles": [
     "/Users/iqbal-kang/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/iqbal-kang/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

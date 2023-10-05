@@ -18,7 +18,7 @@ public class UsersController : CustomControllerBase
 
   [AllowAnonymous]
   [HttpGet]
-  public async Task<ActionResult<List<User>>> GetUsers()
+  public async Task<ActionResult<List<MemberDTO>>> GetUsers()
   {
     return await _userService.GetAllUsersAsync();
   }

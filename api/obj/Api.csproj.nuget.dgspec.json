@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/iqbal-kang/Desktop/full-stack/matchng/api/Api.csproj": {}
+    "/Users/iqbal-kang/Desktop/full-stack/coupled/api/Api.csproj": {}
   },
   "projects": {
-    "/Users/iqbal-kang/Desktop/full-stack/matchng/api/Api.csproj": {
+    "/Users/iqbal-kang/Desktop/full-stack/coupled/api/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/iqbal-kang/Desktop/full-stack/matchng/api/Api.csproj",
+        "projectUniqueName": "/Users/iqbal-kang/Desktop/full-stack/coupled/api/Api.csproj",
         "projectName": "Api",
-        "projectPath": "/Users/iqbal-kang/Desktop/full-stack/matchng/api/Api.csproj",
+        "projectPath": "/Users/iqbal-kang/Desktop/full-stack/coupled/api/Api.csproj",
         "packagesPath": "/Users/iqbal-kang/.nuget/packages/",
-        "outputPath": "/Users/iqbal-kang/Desktop/full-stack/matchng/api/obj/",
+        "outputPath": "/Users/iqbal-kang/Desktop/full-stack/coupled/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/iqbal-kang/.nuget/NuGet/NuGet.Config"

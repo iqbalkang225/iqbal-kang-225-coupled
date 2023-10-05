@@ -27,9 +27,11 @@ public class UsersService : IUsersService
   }
 
   // gets all the users from the DB
-  public async Task<List<User>> GetAllUsersAsync()
+  public async Task<List<MemberDTO>> GetAllUsersAsync()
   {
-    return await _context.Users.Include("Photos").ToListAsync();
+    List<User> users = await _context.Users.Include("Photos").ToListAsync();
+
+    return _mapper.Map<List<MemberDTO>>(users);
   }
 
   //! gets a single user from DB with the matching id

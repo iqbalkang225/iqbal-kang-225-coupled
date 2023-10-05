@@ -6,7 +6,7 @@ namespace Api.ServiceContracts;
 
 public interface IUsersService
 {
-  Task<List<User>> GetAllUsersAsync();
+  Task<List<MemberDTO>> GetAllUsersAsync();
 
   Task<User?> GetUserByIdAsync(int id);
 
