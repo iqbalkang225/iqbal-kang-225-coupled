@@ -1,35 +1,51 @@
-﻿using Api.Database;
+﻿using Api.DTO;
 using Api.Entities;
+using Api.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Api.Controllers;
 
 [Authorize]
 public class UsersController : CustomControllerBase
 {
-  public readonly MatchngDbContext _db;
+  public readonly IUsersService _userService;
 
-  public UsersController(MatchngDbContext db)
+  public UsersController(IUsersService userService)
   {
-    _db = db;
+    _userService = userService;
   }
 
   [AllowAnonymous]
   [HttpGet]
   public async Task<ActionResult<List<User>>> GetUsers()
   {
-    return await _db.Users.ToListAsync();
+    return await _userService.GetAllUsersAsync();
   }
 
-  [HttpGet("{id}")]
-  public async Task<ActionResult<User>> GetUser(int id)
+  [HttpGet("{id:int}")]
+  public async Task<ActionResult<User>> GetUserById(int id)
   {
-    User? user = await _db.Users.FindAsync(id);
+    User? user = await _userService.GetUserByIdAsync(id);
 
     if (user == null) return NotFound();
 
     return user;
   }
+
+  [HttpGet("{userName}")]
+  public async Task<ActionResult<MemberDTO>> GetUserByUserName(string userName)
+  {
+    MemberDTO? memberDTO = await _userService.GetUserByUserNameAsync(userName);
+
+    if (memberDTO == null) return NotFound();
+
+    return memberDTO;
+  }
+
+  // [HttpPost]
+  // public async Task<ActionResult> AddUser()
+  // {
+  //   return Ok();
+  // }
 }

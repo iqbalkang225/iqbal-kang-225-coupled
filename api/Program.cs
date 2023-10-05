@@ -26,6 +26,7 @@ app.UseAuthorization();
 // adding the controllers
 app.MapControllers();
 
+//seeding the data into the DB
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 try

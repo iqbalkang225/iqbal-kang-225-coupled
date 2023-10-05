@@ -1,5 +1,6 @@
 ﻿using Api.Database;
 using Api.ServiceContracts;
+using Api.Services;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,8 @@ public static class ApplicationServiceExtensions
   {
     service.AddCors();
     service.AddScoped<ITokenService, TokenService>();
+    service.AddScoped<IUsersService, UsersService>();
+    service.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
     service.AddDbContext<MatchngDbContext>(options =>
     {

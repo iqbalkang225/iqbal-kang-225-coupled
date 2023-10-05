@@ -12,6 +12,8 @@ public class Photo
 
   public bool IsMain { get; set; }
 
+  public int PublicId { get; set; }
+
   // public int UserId { get; set; }
 
   [ForeignKey("UserId")]

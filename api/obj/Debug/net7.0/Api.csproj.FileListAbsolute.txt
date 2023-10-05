@@ -70,3 +70,5 @@
 /Users/iqbal-kang/Desktop/full-stack/matchng/api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
 /Users/iqbal-kang/Desktop/full-stack/matchng/api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/iqbal-kang/Desktop/full-stack/matchng/api/bin/Debug/net7.0/Database/UserSeedData.json
+/Users/iqbal-kang/Desktop/full-stack/matchng/api/bin/Debug/net7.0/AutoMapper.dll
+/Users/iqbal-kang/Desktop/full-stack/matchng/api/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

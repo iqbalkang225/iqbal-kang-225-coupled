@@ -30,14 +30,17 @@ namespace Api.Database.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("PublicId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PhotoId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("photos", (string)null);
+                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("Api.Entities.User", b =>
@@ -97,16 +100,14 @@ namespace Api.Database.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Api.Entities.Photo", b =>
                 {
                     b.HasOne("Api.Entities.User", "User")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

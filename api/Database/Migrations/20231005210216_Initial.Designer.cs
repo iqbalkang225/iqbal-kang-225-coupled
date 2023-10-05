@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Database.Migrations
 {
     [DbContext(typeof(MatchngDbContext))]
-    [Migration("20231005011840_ExtendedUser")]
-    partial class ExtendedUser
+    [Migration("20231005210216_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,14 +33,17 @@ namespace Api.Database.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("PublicId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PhotoId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("photos");
+                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("Api.Entities.User", b =>
@@ -107,9 +110,7 @@ namespace Api.Database.Migrations
                 {
                     b.HasOne("Api.Entities.User", "User")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
