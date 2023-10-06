@@ -1,29 +1,23 @@
-<nav class="navbar navbar-expand-md bg-secondary">
-  <div class="container">
-    <a class="navbar-brand text-dark" routerLink="">Matchng</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="collapse navbar-collapse justify-content-between"
-      id="navbarSupportedContent"
-    >
-      <app-navbar-links *ngIf="authService.user$ | async"></app-navbar-links>
-
-      <div class="ms-auto">
-        <app-navbar-form *ngIf="!(authService.user$ | async)"></app-navbar-form>
-        <app-navbar-dropdown
-          *ngIf="authService.user$ | async"
-        ></app-navbar-dropdown>
-      </div>
-    </div>
+<nav class="flex justify-between container mx-auto py-4">
+  <!-- logo -->
+  <div class="flex-centered">
+    <img src="./assets/logo.svg" alt="coupled-logo" class="w-8" />
+    <h2 class="font-semibold capitalize text-2xl">coupled</h2>
   </div>
+  <!-- form -->
+  <form class="flex-centered gap-6">
+    <input
+      type="text"
+      class="bg-transparent border rounded-full w-60 px-2 py-1.5 outline-none"
+      placeholder="Username"
+    />
+    <input
+      type="password"
+      class="bg-transparent border rounded-full w-60 px-2 py-1.5 outline-none"
+      placeholder="Password"
+    />
+    <button class="bg-primary px-8 py-1.5 rounded-full rounded-tr-none">
+      Login
+    </button>
+  </form>
 </nav>
