@@ -1,0 +1,17 @@
+<form class="flex-centered gap-6" #form="ngForm" (submit)="onSubmit(form)">
+  <input
+    type="text"
+    class="input"
+    placeholder="Username"
+    ngModel
+    name="userName"
+  />
+  <input
+    type="password"
+    class="input"
+    placeholder="Password"
+    ngModel
+    name="password"
+  />
+  <button class="chat-btn">Login</button>
+</form>

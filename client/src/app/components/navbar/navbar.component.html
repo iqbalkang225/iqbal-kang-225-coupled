@@ -1,0 +1,26 @@
+<nav class="flex justify-between container mx-auto py-4">
+  <!-- logo -->
+  <app-nav-logo></app-nav-logo>
+
+  <!-- links -->
+  <ul class="flex-centered gap-12" *ngIf="authService.user$ | async">
+    <li>
+      <a class="link" routerLink="">Home</a>
+    </li>
+    <li>
+      <a class="link" routerLink="matches">Matches</a>
+    </li>
+    <li>
+      <a class="link" routerLink="favorites">Favorites</a>
+    </li>
+    <li>
+      <a class="link" routerLink="messages">Messages</a>
+    </li>
+    <li>
+      <button class="chat-btn" (click)="onLogout()">Welcome Lisa</button>
+    </li>
+  </ul>
+
+  <!-- form -->
+  <app-nav-login *ngIf="!(authService.user$ | async)"></app-nav-login>
+</nav>
