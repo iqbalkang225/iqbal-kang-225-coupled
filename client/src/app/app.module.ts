@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { NavLoginComponent } from './components/navbar/nav-login/nav-login.component';
 import { NavLinksComponent } from './components/navbar/nav-links/nav-links.component';
 import { NavLogoComponent } from './components/navbar/nav-logo/nav-logo.component';
-import { MatchesListComponent } from './pages/matches-page/matches-list/matches-list.component';
-import { MatchesDetailsComponent } from './pages/matches-page/matches-details/matches-details.component';
 import { HomeComponent } from './pages/home-page/home.component';
+import { RegisterComponent } from './pages/register-page/register/register.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { MembersListComponent } from './pages/explore-page/members-list/members-list.component';
+import { MemberDetailsComponent } from './pages/explore-page/member-details/member-details.component';
+import { MemberCardComponent } from './pages/explore-page/member-card/member-card.component';
+import { BtnCircleComponent } from './components/btn-circle/btn-circle.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +27,22 @@ import { HomeComponent } from './pages/home-page/home.component';
     NavLoginComponent,
     NavLinksComponent,
     NavLogoComponent,
-    MatchesListComponent,
-    MatchesDetailsComponent,
+    RegisterComponent,
+    MembersListComponent,
+    MemberDetailsComponent,
+    MemberCardComponent,
+    BtnCircleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: JwtInterceptor },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

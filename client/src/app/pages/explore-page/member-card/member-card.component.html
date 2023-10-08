@@ -1,0 +1,31 @@
+<a
+  class="bg-white rounded-2xl p-4 text-body-light shadow-xl hover:shadow-sm duration-timing cursor-pointer block"
+  *ngIf="member"
+  routerLink="{{ member.userName }}"
+>
+  <!-- photo and location tag -->
+  <div class="relative">
+    <img
+      [src]="member.photoUrl"
+      alt="member-photo"
+      class="rounded-2xl w-full"
+    />
+    <div class="absolute top-4 left-4 bg-white py-1 px-4 rounded-lg flex gap-2">
+      <fa-icon [icon]="locationIcon" class="text-primary"></fa-icon>
+      <span class="capitalize">{{ member.city }}</span>
+    </div>
+  </div>
+  <!-- member info and icons -->
+  <div class="flex justify-between mt-4">
+    <div>
+      <p class="text-2xl capitalize">{{ member.userName }}</p>
+      <p class="text-xs opacity-50 font-bold">
+        Age: <span>{{ member.age }}</span>
+      </p>
+    </div>
+    <div class="flex-centered">
+      <app-btn-circle> <fa-icon [icon]="heartIcon"></fa-icon></app-btn-circle>
+      <app-btn-circle><fa-icon [icon]="messageIcon"></fa-icon></app-btn-circle>
+    </div>
+  </div>
+</a>

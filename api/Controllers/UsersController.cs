@@ -16,7 +16,6 @@ public class UsersController : CustomControllerBase
     _userService = userService;
   }
 
-  [AllowAnonymous]
   [HttpGet]
   public async Task<ActionResult<List<MemberDTO>>> GetUsers()
   {

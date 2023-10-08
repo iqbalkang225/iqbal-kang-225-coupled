@@ -10,11 +10,11 @@
   }
 
   .flex-centered {
-    @apply flex justify-center items-center gap-2;
+    @apply flex justify-center items-center gap-4;
   }
 
   .chat-btn {
-    @apply bg-primary px-8 py-1.5 rounded-full rounded-tr-none hover:rounded-tr-full hover:bg-purple duration-timing;
+    @apply bg-primary px-8 py-2.5 rounded-full rounded-tr-none hover:rounded-tr-full hover:bg-purple duration-timing;
   }
 
   .input {
