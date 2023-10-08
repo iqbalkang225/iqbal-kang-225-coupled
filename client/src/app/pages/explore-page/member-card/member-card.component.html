@@ -1,14 +1,14 @@
 <a
-  class="bg-white rounded-2xl p-4 text-body-light shadow-xl hover:shadow-sm duration-timing cursor-pointer block"
+  class="bg-white rounded-2xl p-4 text-body-light shadow-xl hover:shadow-sm duration-timing cursor-pointer block group"
   *ngIf="member"
   routerLink="{{ member.userName }}"
 >
   <!-- photo and location tag -->
-  <div class="relative">
+  <div class="relative overflow-hidden rounded-2xl">
     <img
       [src]="member.photoUrl"
       alt="member-photo"
-      class="rounded-2xl w-full"
+      class="rounded-2xl w-full group-hover:scale-105 duration-timing"
     />
     <div class="absolute top-4 left-4 bg-white py-1 px-4 rounded-lg flex gap-2">
       <fa-icon [icon]="locationIcon" class="text-primary"></fa-icon>

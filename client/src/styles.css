@@ -17,11 +17,27 @@
     @apply bg-primary px-8 py-2.5 rounded-full rounded-tr-none hover:rounded-tr-full hover:bg-purple duration-timing;
   }
 
+  .round-btn {
+    @apply bg-primary w-10 h-10 rounded-full flex-centered gap-0 text-white;
+  }
+
   .input {
     @apply bg-transparent border rounded-full w-60 px-2 py-1.5 outline-none border-gray-400 focus:border-white duration-timing;
   }
 
   .link {
     @apply hover:text-primary cursor-pointer duration-timing;
+  }
+
+  .container-centered {
+    @apply container px-4 md:px-0 mx-auto;
+  }
+
+  .tab-list {
+    @apply min-w-fit flex-1 text-center;
+  }
+
+  .tab-link {
+    @apply text-xs font-bold uppercase px-5 py-4 shadow-lg rounded-2xl block leading-normal cursor-pointer;
   }
 }

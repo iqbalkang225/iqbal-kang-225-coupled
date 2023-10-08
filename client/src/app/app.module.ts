@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,6 @@ import { HomeComponent } from './pages/home-page/home.component';
 import { RegisterComponent } from './pages/register-page/register/register.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MembersListComponent } from './pages/explore-page/members-list/members-list.component';
-import { MemberDetailsComponent } from './pages/explore-page/member-details/member-details.component';
 import { MemberCardComponent } from './pages/explore-page/member-card/member-card.component';
 import { BtnCircleComponent } from './components/btn-circle/btn-circle.component';
 
@@ -29,7 +29,6 @@ import { BtnCircleComponent } from './components/btn-circle/btn-circle.component
     NavLogoComponent,
     RegisterComponent,
     MembersListComponent,
-    MemberDetailsComponent,
     MemberCardComponent,
     BtnCircleComponent,
   ],
@@ -39,6 +38,7 @@ import { BtnCircleComponent } from './components/btn-circle/btn-circle.component
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, multi: true, useClass: JwtInterceptor },

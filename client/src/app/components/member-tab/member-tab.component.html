@@ -1,0 +1,75 @@
+<div class="flex flex-col h-full">
+  <ul class="flex-centered flex-wrap pb-4 w-full">
+    <li class="tab-list">
+      <a
+        class="tab-link"
+        (click)="toggleTabs(1)"
+        [ngClass]="getActiveTabClasses(1)"
+      >
+        <fa-icon [icon]="userIcon" class="mr-2"></fa-icon> About
+      </a>
+    </li>
+    <li class="tab-list">
+      <a
+        class="tab-link"
+        (click)="toggleTabs(2)"
+        [ngClass]="getActiveTabClasses(2)"
+      >
+        <fa-icon [icon]="imageIcon" class="mr-2"></fa-icon> Photos
+      </a>
+    </li>
+    <li class="tab-list">
+      <a
+        class="tab-link"
+        (click)="toggleTabs(3)"
+        [ngClass]="getActiveTabClasses(3)"
+      >
+        <fa-icon [icon]="messageIcon" class="mr-2"></fa-icon> Messages
+      </a>
+    </li>
+  </ul>
+  <div
+    class="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded-2xl flex-1"
+    *ngIf="member"
+  >
+    <div class="px-4 py-5 flex-auto">
+      <div class="tab-content tab-space">
+        <div [ngClass]="getActiveTabContentClass(1)">
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-xl font-bold">Introduction</h3>
+              <p>{{ member.introduction }}</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Looking For</h3>
+              <p>{{ member.lookingFor }}</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Interests</h3>
+              <p>{{ member.interests }}</p>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="getActiveTabContentClass(2)" class="flex flex-centered">
+          <gallery
+            *ngIf="openTab === 2"
+            [items]="images"
+            thumbPosition="left"
+            [imageSize]="'cover'"
+            class="w-[900px]"
+          ></gallery>
+        </div>
+        <div [ngClass]="getActiveTabContentClass(3)">
+          <p>
+            Efficiently unleash cross-media information without cross-media
+            value. Quickly maximize timely deliverables for real-time schemas.
+            <br />
+            <br />
+            Dramatically maintain clicks-and-mortar solutions without functional
+            solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

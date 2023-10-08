@@ -1,4 +1,7 @@
-app-home {
+app-home,
+app-member-details {
   flex-grow: 1;
+  height: 100%;
   display: flex;
+  margin-bottom: 16px;
 }
