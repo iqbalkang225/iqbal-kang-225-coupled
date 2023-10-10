@@ -18,6 +18,9 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MembersListComponent } from './pages/explore-page/members-list/members-list.component';
 import { MemberCardComponent } from './pages/explore-page/member-card/member-card.component';
 import { BtnCircleComponent } from './components/btn-circle/btn-circle.component';
+import { MemberEditComponent } from './pages/explore-page/member-edit/member-edit.component';
+import { FlexColComponent } from './components/flex-col/flex-col.component';
+import { SharedModule } from './modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { BtnCircleComponent } from './components/btn-circle/btn-circle.component
     MembersListComponent,
     MemberCardComponent,
     BtnCircleComponent,
+    MemberEditComponent,
+    FlexColComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { BtnCircleComponent } from './components/btn-circle/btn-circle.component
     HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, multi: true, useClass: JwtInterceptor },

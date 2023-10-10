@@ -7,6 +7,8 @@ import { authGuard } from './guards/auth.guard';
 import { RegisterComponent } from './pages/register-page/register/register.component';
 import { MembersListComponent } from './pages/explore-page/members-list/members-list.component';
 import { MemberDetailsComponent } from './pages/explore-page/member-details/member-details.component';
+import { MemberEditComponent } from './pages/explore-page/member-edit/member-edit.component';
+import { unsavedChangesGuard } from './guards/unsaved-changes.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,11 @@ const routes: Routes = [
     children: [
       { path: 'members', component: MembersListComponent },
       { path: 'members/:username', component: MemberDetailsComponent },
+      {
+        path: 'member/edit',
+        component: MemberEditComponent,
+        canDeactivate: [unsavedChangesGuard],
+      },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'messages', component: MessagesComponent },
     ],

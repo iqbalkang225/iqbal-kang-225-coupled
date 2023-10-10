@@ -1,0 +1,144 @@
+<section
+  class="container-centered grid grid-cols-[1fr,3fr] text-body-light gap-4"
+  *ngIf="member"
+>
+  <!-- left side member information -->
+  <div
+    class="bg-white rounded-2xl font-bold flex flex-col justify-center items-center p-4 space-y-8 text-center"
+  >
+    <img [src]="member.photoUrl" class="w-60 h-60 rounded-full bg-gray-400" />
+    <div>
+      <h2 class="text-3xl capitalize">{{ member.userName }}</h2>
+      <p class="capitalize">{{ member.city }}, {{ member.country }}</p>
+      <p>{{ member.age }} years</p>
+    </div>
+    <div>
+      <p>Member Since</p>
+      <p class="text-xs font-normal">{{ member.createdAt }}</p>
+    </div>
+    <div>
+      <p>Last Active</p>
+      <p class="text-xs font-normal">{{ member.lastActive }}</p>
+    </div>
+    <div class="w-full">
+      <button
+        type="submit"
+        class="tab-link bg-primary w-full text-white disabled:bg-primary/80 disabled:cursor-not-allowed"
+        form="editForm"
+        [disabled]="!form.dirty"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+  <!-- right side tabbed section -->
+  <div class="flex flex-col h-full">
+    <ul class="flex-centered flex-wrap pb-4 w-full">
+      <li class="tab-list">
+        <a
+          class="tab-link"
+          (click)="toggleTabs(1)"
+          [ngClass]="getActiveTabClasses(1)"
+        >
+          <fa-icon [icon]="userIcon" class="mr-2"></fa-icon> About
+        </a>
+      </li>
+      <li class="tab-list">
+        <a
+          class="tab-link"
+          (click)="toggleTabs(2)"
+          [ngClass]="getActiveTabClasses(2)"
+        >
+          <fa-icon [icon]="imageIcon" class="mr-2"></fa-icon> Edit Photos
+        </a>
+      </li>
+    </ul>
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded-2xl flex-1"
+    >
+      <div class="px-4 py-5 flex-auto">
+        <div [ngClass]="getActiveTabContentClass(1)">
+          <form #form="ngForm" id="editForm" (ngSubmit)="onSubmit(form)">
+            <!-- description textarea -->
+            <app-flex-col>
+              <label for="introduction" [ngClass]="labelClasses"
+                >Description</label
+              >
+              <textarea
+                class="text-area"
+                name="introduction"
+                id="introduction"
+                rows="5"
+                [(ngModel)]="member.introduction"
+              ></textarea>
+            </app-flex-col>
+            <!-- looking for textarea -->
+            <app-flex-col>
+              <label for="lookingFor" [ngClass]="labelClasses"
+                >Looking For</label
+              >
+              <textarea
+                class="text-area"
+                name="lookingFor"
+                id="lookingFor"
+                rows="5"
+                [(ngModel)]="member.lookingFor"
+              ></textarea>
+            </app-flex-col>
+            <!-- interests textarea -->
+            <app-flex-col>
+              <label for="interests" [ngClass]="labelClasses">Interests</label>
+              <textarea
+                class="text-area"
+                name="interests"
+                id="interests"
+                [(ngModel)]="member.interests"
+              ></textarea>
+            </app-flex-col>
+
+            <!-- location details -->
+            <app-flex-col [externalClasses]="'mb-0'">
+              <h3 [ngClass]="labelClasses">Location Details</h3>
+              <div class="flex gap-16">
+                <!-- city input -->
+                <div class="flex-centered">
+                  <label for="city">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    class="text-area rounded p-1"
+                    [(ngModel)]="member.city"
+                  />
+                </div>
+
+                <!-- country input -->
+                <div class="flex-centered">
+                  <label for="country">Country</label>
+                  <input
+                    type="text"
+                    name="country"
+                    id="country"
+                    class="text-area rounded p-1"
+                    [(ngModel)]="member.country"
+                  />
+                </div>
+              </div>
+            </app-flex-col>
+          </form>
+        </div>
+
+        <div [ngClass]="getActiveTabContentClass(2)">
+          <p>
+            Efficiently unleash cross-media information without cross-media
+            value. Quickly maximize timely deliverables for real-time schemas.
+            <br />
+            <br />
+            Dramatically maintain clicks-and-mortar solutions without functional
+            solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

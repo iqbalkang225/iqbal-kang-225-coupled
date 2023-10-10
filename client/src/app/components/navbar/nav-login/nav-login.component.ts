@@ -13,7 +13,7 @@ export class NavLoginComponent {
 
   onSubmit(form: NgForm) {
     this.authService.login(form.value).subscribe({
-      next: () => this.router.navigateByUrl('/explore'),
+      next: () => this.router.navigateByUrl('/members'),
       error: (error) => console.log(error),
     });
   }

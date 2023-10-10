@@ -4,6 +4,7 @@ using Api.Entities;
 using Api.ServiceContracts;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Api.Services;
 
@@ -19,12 +20,29 @@ public class UsersService : IUsersService
   }
 
   //! adds new user to the DB
-  public async Task<bool> AddUserAsync(User user)
+  public async Task<bool> AddUserAsync(MemberDTO member)
   {
-    _context.Users.Add(user);
+    // _mapper.Map<User>(member);
+    // _mapper.Map(User, member);
+    // _context.Users.Add(user);
+    return await _context.SaveChangesAsync() > 0;
+    // return true;
+
+  }
+
+  public async Task<bool> UpdateUserAsync(string userName, MemberEditDTO memberEditDTO)
+  {
+
+    User? user = await _context.Users.FirstOrDefaultAsync(temp => temp.UserName == userName);
+
+    if (user == null) return false;
+
+    _mapper.Map(memberEditDTO, user);
     return await _context.SaveChangesAsync() > 0;
 
   }
+
+
 
   // gets all the users from the DB
   public async Task<List<MemberDTO>> GetAllUsersAsync()

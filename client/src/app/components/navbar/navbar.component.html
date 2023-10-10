@@ -16,8 +16,24 @@
     <li>
       <a class="link" routerLink="messages">Messages</a>
     </li>
-    <li>
-      <button class="chat-btn" (click)="onLogout()">Welcome Lisa</button>
+    <li class="relative">
+      <button
+        class="chat-btn py-1.5"
+        [ngClass]="getButtonClasses()"
+        (click)="toggleButton()"
+      >
+        Welcome Lisa
+        <fa-icon class="ml-1 text-lg" [icon]="arrowIcon"></fa-icon>
+      </button>
+      <div *ngIf="isButtonOpen" [ngClass]="btnContainerClasses">
+        <a
+          [ngClass]="innerBtnClasses"
+          routerLink="member/edit"
+          (click)="toggleButton()"
+          >Edit Profile</a
+        >
+        <button [ngClass]="innerBtnClasses" (click)="onLogout()">Logout</button>
+      </div>
     </li>
   </ul>
 

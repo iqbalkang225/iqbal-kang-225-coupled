@@ -25,6 +25,10 @@
     @apply bg-transparent border rounded-full w-60 px-2 py-1.5 outline-none border-gray-400 focus:border-white duration-timing;
   }
 
+  .text-area {
+    @apply border border-body-light/20 outline-none focus:border-body-light/100 p-2 duration-timing rounded-xl;
+  }
+
   .link {
     @apply hover:text-primary cursor-pointer duration-timing;
   }
@@ -38,6 +42,6 @@
   }
 
   .tab-link {
-    @apply text-xs font-bold uppercase px-5 py-4 shadow-lg rounded-2xl block leading-normal cursor-pointer;
+    @apply text-xs font-bold uppercase px-5 py-4 shadow-lg rounded-2xl block leading-normal cursor-pointer hover:bg-purple hover:text-white duration-timing;
   }
 }

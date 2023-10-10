@@ -1,6 +1,8 @@
-﻿using Api.DTO;
+﻿using System.Security.Claims;
+using Api.DTO;
 using Api.Entities;
 using Api.ServiceContracts;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +12,12 @@ namespace Api.Controllers;
 public class UsersController : CustomControllerBase
 {
   public readonly IUsersService _userService;
+  public readonly IMapper _mapper;
 
-  public UsersController(IUsersService userService)
+  public UsersController(IUsersService userService, IMapper mapper)
   {
     _userService = userService;
+    _mapper = mapper;
   }
 
   [HttpGet]
@@ -42,9 +46,18 @@ public class UsersController : CustomControllerBase
     return memberDTO;
   }
 
-  // [HttpPost]
-  // public async Task<ActionResult> AddUser()
-  // {
-  //   return Ok();
-  // }
+  [HttpPut]
+  public async Task<ActionResult> UpdateUser(MemberEditDTO memberEditDTO)
+  {
+    var userName = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+    if (userName == null) return BadRequest("No user was found.");
+
+    bool result = await _userService.UpdateUserAsync(userName, memberEditDTO);
+
+    if (result) return NoContent();
+
+    return BadRequest("Failed to update the profile.");
+  }
+
 }
