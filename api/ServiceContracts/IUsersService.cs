@@ -12,9 +12,10 @@ public interface IUsersService
 
   Task<MemberDTO?> GetUserByUserNameAsync(string userName);
 
-  // Task<bool> AddUserAsync(User user);
+  Task<User?> GetUserAsync(string userName);
 
-  // Task<bool> UpdateUserAsync(MemberDTO member, MemberEditDTO memberEditDTO);
   Task<bool> UpdateUserAsync(string userName, MemberEditDTO memberEditDTO);
+
+  Task<bool> SaveAllChangesAsync();
 
 }

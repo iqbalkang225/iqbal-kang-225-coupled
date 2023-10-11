@@ -44,7 +44,7 @@ namespace Api.Database.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     PhotoUrl = table.Column<string>(type: "TEXT", nullable: false),
                     IsMain = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PublicId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PublicId = table.Column<string>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>

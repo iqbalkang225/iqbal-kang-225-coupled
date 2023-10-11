@@ -30,10 +30,23 @@ public class UsersService : IUsersService
 
   }
 
+  public async Task<bool> SaveAllChangesAsync()
+  {
+    return await _context.SaveChangesAsync() > 0;
+  }
+
+  public async Task<User?> GetUserAsync(string userName)
+  {
+    User? user = await _context.Users.Include("Photos").FirstOrDefaultAsync(temp => temp.UserName == userName);
+
+    if (user == null) return null;
+    return user;
+  }
+
   public async Task<bool> UpdateUserAsync(string userName, MemberEditDTO memberEditDTO)
   {
 
-    User? user = await _context.Users.FirstOrDefaultAsync(temp => temp.UserName == userName);
+    User? user = await GetUserAsync(userName);
 
     if (user == null) return false;
 

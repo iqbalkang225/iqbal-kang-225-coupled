@@ -2,7 +2,9 @@
 using Api.DTO;
 using Api.Entities;
 using Api.ServiceContracts;
+using Api.Services;
 using AutoMapper;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,11 +14,17 @@ namespace Api.Controllers;
 public class UsersController : CustomControllerBase
 {
   public readonly IUsersService _userService;
+
+  public readonly IPhotoService _photoService;
+
   public readonly IMapper _mapper;
 
-  public UsersController(IUsersService userService, IMapper mapper)
+  public UsersController(IUsersService userService, IPhotoService photoService, IMapper mapper)
   {
     _userService = userService;
+
+    _photoService = photoService;
+
     _mapper = mapper;
   }
 
@@ -58,6 +66,40 @@ public class UsersController : CustomControllerBase
     if (result) return NoContent();
 
     return BadRequest("Failed to update the profile.");
+  }
+
+  [HttpPost("add-photo")]
+  public async Task<ActionResult<PhotoDTO>> UploadImageToCloudinary(IFormFile file)
+  {
+
+    if (file.Length <= 0) return BadRequest("Photo is required.");
+
+    var userName = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+    if (userName == null) return Unauthorized();
+
+    User? user = await _userService.GetUserAsync(userName);
+
+    if (user == null) return NotFound();
+
+    ImageUploadResult result = await _photoService.UploadImageAsync(file);
+
+    if (result.Error != null) return BadRequest(result.Error.Message);
+
+    Photo photo = new Photo()
+    {
+      PhotoUrl = result.SecureUrl.AbsoluteUri,
+      PublicId = result.PublicId,
+    };
+
+    if (user.Photos.Count == 0) photo.IsMain = true;
+
+
+    user.Photos.Add(photo);
+
+    if (await _userService.SaveAllChangesAsync()) return _mapper.Map<PhotoDTO>(photo);
+
+    return BadRequest("Something went wrong.");
   }
 
 }

@@ -10,11 +10,9 @@ public class Photo
 
   public string PhotoUrl { get; set; } = String.Empty;
 
-  public bool IsMain { get; set; }
+  public bool IsMain { get; set; } = false;
 
-  public int PublicId { get; set; }
-
-  // public int UserId { get; set; }
+  public string PublicId { get; set; } = string.Empty;
 
   [ForeignKey("UserId")]
   public User? User { get; set; }
