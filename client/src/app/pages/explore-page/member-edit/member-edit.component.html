@@ -128,16 +128,40 @@
           </form>
         </div>
 
-        <div [ngClass]="getActiveTabContentClass(2)">
-          <p>
-            Efficiently unleash cross-media information without cross-media
-            value. Quickly maximize timely deliverables for real-time schemas.
-            <br />
-            <br />
-            Dramatically maintain clicks-and-mortar solutions without functional
-            solutions.
-          </p>
-        </div>
+        <app-flex-col
+          [ngClass]="getActiveTabContentClass(2)"
+          [externalClasses]="'gap-4'"
+        >
+          <div class="flex gap-4">
+            <div
+              class="h-36 w-36 rounded-2xl overflow-hidden cursor-pointer relative"
+              *ngFor="let photo of member.photos"
+            >
+              <img [src]="photo.photoUrl" alt="member photo" />
+              <p class="absolute text-xs bg-red-300 top-0 left-0">
+                Make profile picture
+              </p>
+              <p class="absolute text-xs bg-red-300 bottom-0 left-0">delete</p>
+            </div>
+          </div>
+          <div>
+            <label
+              for="photos"
+              class="h-48 w-48 border border-primary border-dashed flex-centered rounded-xl"
+              ><span>Select Photos</span></label
+            >
+            <input
+              type="file"
+              name="photos"
+              id="photos"
+              multiple="multiple"
+              (change)="onChange($event)"
+            />
+            <button class="bg-primary px-4 py-1" (click)="onUpload()">
+              submit
+            </button>
+          </div>
+        </app-flex-col>
       </div>
     </div>
   </div>

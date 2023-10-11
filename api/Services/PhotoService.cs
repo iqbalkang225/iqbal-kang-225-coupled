@@ -25,6 +25,28 @@ public class PhotoService : IPhotoService
 
   }
 
+  // public async Task<ImageUploadResult> UploadImageAsync(List<IFormFile> files)
+  // {
+  //   ImageUploadResult? uploadResult = null;
+
+  //   foreach (IFormFile file in files)
+  //   {
+
+  //     Stream fileStream = file.OpenReadStream();
+
+  //     var uploadParams = new ImageUploadParams()
+  //     {
+  //       File = new FileDescription(file.FileName, fileStream),
+  //       Transformation = new Transformation().Height(500).Width(500).Crop("fill").Gravity("face"),
+  //       Folder = "Coupled"
+  //     };
+
+  //     uploadResult = await _cloudinary.UploadAsync(uploadParams);
+  //   }
+
+  //   return uploadResult;
+  // }
+
   public async Task<ImageUploadResult> UploadImageAsync(IFormFile file)
   {
 

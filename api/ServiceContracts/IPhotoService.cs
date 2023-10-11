@@ -6,6 +6,7 @@ public interface IPhotoService
 {
 
   Task<ImageUploadResult> UploadImageAsync(IFormFile file);
+  // Task<ImageUploadResult> UploadImageAsync(List<IFormFile> files);
 
   Task<DeletionResult> DeleteImageAsync(string id);
 

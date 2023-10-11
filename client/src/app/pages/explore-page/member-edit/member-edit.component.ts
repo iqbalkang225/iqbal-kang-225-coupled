@@ -25,6 +25,8 @@ export class MemberEditComponent implements OnInit {
   user: UserResponse | null = null;
   openTab = 1;
 
+  files: FileList | undefined;
+
   constructor(
     private authService: AuthService,
     private memberService: MemberService,
@@ -77,4 +79,52 @@ export class MemberEditComponent implements OnInit {
       error: (error) => console.log(error),
     });
   }
+
+  onChange(event: Event) {
+    const files = (<HTMLInputElement>event.target).files;
+    if (!files) return;
+    this.files = files;
+  }
+
+  onUpload() {
+    if (!this.files) return;
+
+    Array.from(this.files).forEach((file) => {
+      console.log(file);
+      console.log(this.files);
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      this.memberService.uploadPhoto(formData).subscribe({
+        next: (res) => console.log(res),
+        error: (error) => console.log(error),
+      });
+    });
+  }
+
+  // onChange(event: Event) {
+  //   const files = (<HTMLInputElement>event.target).files;
+
+  //   if (!files) return;
+
+  //   const formData = new FormData();
+
+  //   for (let i = 0; i < files.length; i++) {
+  //     formData.append('file', files[i]);
+  //   }
+
+  //   this.files = formData;
+  // }
+
+  // onUpload() {
+  //   this.files?.forEach((file) => {
+  //     console.log(file);
+  //     console.log(this.files);
+  //     // this.memberService.uploadPhoto(file).subscribe({
+  //     //   next: (res) => console.log(res),
+  //     //   error: (error) => console.log(error),
+  //     // });
+  //   });
+  // }
 }

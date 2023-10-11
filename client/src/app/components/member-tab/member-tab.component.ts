@@ -64,13 +64,6 @@ export class MemberTabComponent implements OnInit, OnDestroy {
 
     this.member.photos.forEach((photo) => {
       this.images.push(
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
-        new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl }),
         new ImageItem({ src: photo.photoUrl, thumb: photo.photoUrl })
       );
     });

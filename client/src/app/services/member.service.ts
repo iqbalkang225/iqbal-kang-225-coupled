@@ -20,4 +20,8 @@ export class MemberService {
   updateMember(member: Member) {
     return this.http.put(environment.apiUrl + 'users', member);
   }
+
+  uploadPhoto(files: any) {
+    return this.http.post(environment.apiUrl + 'users/add-photo', files);
+  }
 }

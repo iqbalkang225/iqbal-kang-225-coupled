@@ -68,6 +68,38 @@ public class UsersController : CustomControllerBase
     return BadRequest("Failed to update the profile.");
   }
 
+  // [HttpPost("add-photo")]
+  // public async Task<ActionResult<PhotoDTO>> UploadImageToCloudinary(List<IFormFile> files)
+  // {
+
+
+  //   var userName = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+  //   if (userName == null) return Unauthorized();
+
+  //   User? user = await _userService.GetUserAsync(userName);
+
+  //   if (user == null) return NotFound();
+
+  //   ImageUploadResult result = await _photoService.UploadImageAsync(files);
+
+  //   if (result.Error != null) return BadRequest(result.Error.Message);
+
+  //   Photo photo = new Photo()
+  //   {
+  //     PhotoUrl = result.SecureUrl.AbsoluteUri,
+  //     PublicId = result.PublicId,
+  //   };
+
+  //   if (user.Photos.Count == 0) photo.IsMain = true;
+
+  //   user.Photos.Add(photo);
+
+  //   if (await _userService.SaveAllChangesAsync()) return _mapper.Map<PhotoDTO>(photo);
+
+  //   return BadRequest("Something went wrong.");
+  // }
+
   [HttpPost("add-photo")]
   public async Task<ActionResult<PhotoDTO>> UploadImageToCloudinary(IFormFile file)
   {
@@ -93,7 +125,6 @@ public class UsersController : CustomControllerBase
     };
 
     if (user.Photos.Count == 0) photo.IsMain = true;
-
 
     user.Photos.Add(photo);
 
